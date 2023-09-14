@@ -5,7 +5,7 @@ import {  slideAnimation,
   headTextAnimation,
   headContentAnimation,
   headContainerAnimation} 
-from "../config/config/motion"
+from "../config/motion"
 
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
       {snap.intro && (
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header>
-            <img src="..\public\threejs.png" 
+            <img src="..\threejs.png" 
             alt="logo" 
             className="w-8 h-8 object-contain"
             />
