@@ -19,9 +19,9 @@ import {
 const Customizer = () => {
   const snap = useSnapshot(state);
 
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState('');
 
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
 
   const [activeEditorTab, setActiveEditorTab] = useState("");
@@ -36,7 +36,11 @@ const Customizer = () => {
       case "colorpicker":
         return <ColorPicker />;
       case "filepicker":
-        return <FilePicker />;
+        return <FilePicker 
+          file={file}
+          setFile={setFile}
+          readFile={readFile}
+        />;
       case "aipicker":
         return <AIPicker />;
 
@@ -44,6 +48,38 @@ const Customizer = () => {
         return null;
     }
   };
+
+  const handleDecals = (type, result) => {
+    const decalType = DecalTypes[type]
+
+    state[decalType.stateProperty] = result;
+
+    if(!activeFilterTab[decalType.filterTab]) {
+      handleActiveFilterTab(decalType.filterTab)
+    }
+  }
+
+  const handleActiveFilterTab = (tabname) => {
+    switch (tabname) {
+      case "logoShirt":
+          state.isLogoTexture = !activeFilterTab[tabname]
+        break;
+      case 'stylishShirt':
+          state.isFullTexture = !activeFilterTab[tabname]
+        break;
+      default:
+        state.isFullTexture = true
+        state.isLogoTexture = false
+    }
+  }
+
+  const readFile = (type) => {
+    reader(file)
+      .then((result) => {
+        handleDecals(type, result)
+        setActiveEditorTab('')
+      })
+  }
 
   return (
     <AnimatePresence>
