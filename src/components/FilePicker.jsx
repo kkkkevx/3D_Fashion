@@ -16,7 +16,8 @@ const FilePicker = ({file, setFile, readFile}) => {
         </label>
         
         <p className="mt-2 text-black-500 text-sm truncate">
-          {file === '' ? "No file selected" : file.name} 
+          {file === '' ? "No file selected" : file.name} <br/><br/>
+          Tips: Square picture.
         </p>
       </div>
 
