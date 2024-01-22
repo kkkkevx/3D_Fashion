@@ -7,3 +7,6 @@ OpenAI Chat Assistance: We've integrated OpenAI chat to assist you throughout th
 Website: https://kan-3d-design.net/
 
 Explore the 3D design capabilities at Kan 3D Design and bring your creative ideas to life!
+
+Pic for my website:
+
